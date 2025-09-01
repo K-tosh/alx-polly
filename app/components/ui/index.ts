@@ -3,4 +3,6 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 export { Input } from "./input"
 export { Label } from "./label"
 export { Textarea } from "./textarea"
+export { Badge, badgeVariants } from "./badge"
+
 

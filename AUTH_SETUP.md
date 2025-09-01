@@ -186,3 +186,4 @@ If you encounter issues:
 2. Review the [Next.js documentation](https://nextjs.org/docs)
 3. Check the browser console for error messages
 4. Verify your environment variables are correctly set
+
