@@ -1,5 +1,6 @@
 "use client"
 
+import React from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
@@ -33,4 +34,5 @@ export default function ProtectedRoute({ children, fallback }: ProtectedRoutePro
 
   return <>{children}</>
 }
+
 

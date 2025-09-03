@@ -1,12 +1,13 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import { Button } from "@/app/components/ui/button"
 import { Input } from "@/app/components/ui/input"
 import { Label } from "@/app/components/ui/label"
 import { Textarea } from "@/app/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card"
 import { CreatePollData } from "@/app/types"
+import { validateCreatePoll } from "@/app/lib/validation"
 import Link from "next/link"
 import { Plus, X } from "lucide-react"
 import ProtectedRoute from "@/components/ProtectedRoute"
@@ -47,27 +48,9 @@ export default function CreatePollPage() {
   }
 
   const validateForm = () => {
-    const newErrors: Record<string, string> = {}
-
-    if (!formData.title.trim()) {
-      newErrors.title = "Title is required"
-    }
-
-    if (!formData.description.trim()) {
-      newErrors.description = "Description is required"
-    }
-
-    const validOptions = formData.options.filter(option => option.trim())
-    if (validOptions.length < 2) {
-      newErrors.options = "At least 2 options are required"
-    }
-
-    if (formData.expiresAt && new Date(formData.expiresAt) <= new Date()) {
-      newErrors.expiresAt = "Expiration date must be in the future"
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    const result = validateCreatePoll(formData)
+    setErrors(result.errors)
+    return result.isValid
   }
 
   const handleSubmit = (e: React.FormEvent) => {

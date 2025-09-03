@@ -187,3 +187,4 @@ If you encounter issues:
 3. Check the browser console for error messages
 4. Verify your environment variables are correctly set
 
+
